@@ -1,0 +1,59 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#0b57d0"/>
+  <title>Mitigation Tech (PWA)</title>
+  <style>
+    :root{--bg:#0b57d0;--pill:#1f2937;--pill2:#065f46}
+    body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;color:#0f172a}
+    header{padding:10px;background:var(--bg);color:#fff;display:flex;align-items:center;gap:8px}
+    .badge{background:var(--pill);color:#fff;padding:4px 8px;border-radius:6px;font-size:.85rem}
+    main{padding:16px}
+    h3{margin-top:24px}
+    .muted{opacity:.75}
+    button{background:#0b57d0;color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer}
+    button.secondary{background:#334155}
+    input{padding:8px;border:1px solid #cbd5e1;border-radius:6px}
+    ul{padding-left:20px}
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Mitigation Tech</strong>
+    <span id="aiPathBadge" class="badge" title="Current AI provider">AI: Gemini (API key)</span>
+  </header>
+
+  <main>
+    <section>
+      <h3>Room Scan (WebXR)</h3>
+      <button id="btnStartXR">Start AR scan</button>
+      <div id="xrStatus" class="muted"></div>
+    </section>
+
+    <section>
+      <h3>Scan Inbox</h3>
+      <ul id="inbox"></ul>
+    </section>
+
+    <section>
+      <h3>QR Tools</h3>
+      <button id="btnOpenQr">Open QR Scanner</button>
+      <div id="qrArea" style="margin:8px 0"></div>
+      <div>
+        <input id="qrLink" placeholder="https://app.yourdomain.com/#/import-scan?job=123&scanId=abc" style="min-width:320px"/>
+        <button id="btnMakeQr" class="secondary">Make QR</button>
+        <div id="qrOut" style="margin-top:8px"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+  </script>
+  <script type="module" src="/src/app.js"></script>
+</body>
+</html>
